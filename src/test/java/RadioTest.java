@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+// This class created for testing purpose
 public class RadioTest {
 
     // Set channel to 5
