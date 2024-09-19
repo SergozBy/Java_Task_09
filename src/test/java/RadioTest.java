@@ -116,4 +116,30 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
+    // Set count of channels and select 10
+    @Test
+    public void shouldSetCurrentChannel_11 () {
+        Radio radio = new Radio(13);
+        radio.setCurrentChannel(10);
+        radio.switchChannelNext();
+
+        int expected = 11;
+        int actual = radio.getCurrentChannel();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    // Set count of channels, select max channel and press "next channel"
+    @Test
+    public void shouldSetCurrentChannel_0 () {
+        Radio radio = new Radio(13);
+        radio.setCurrentChannel(12);
+        radio.switchChannelNext();
+
+        int expected = 0;
+        int actual = radio.getCurrentChannel();
+
+        Assertions.assertEquals(expected, actual);
+    }
 }

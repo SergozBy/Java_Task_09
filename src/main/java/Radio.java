@@ -1,16 +1,25 @@
 public class Radio {
     private int  currentChannel;
     private int  currentVolume;
+    private int maxRadiostation;
+
+    public Radio() {
+        this.maxRadiostation = 10 - 1;
+    }
+
+    public Radio(int valueOfRadiostations) {
+        this.maxRadiostation = valueOfRadiostations - 1;
+    }
 
     public int getCurrentChannel() {
         return currentChannel;
     }
 
     public void setCurrentChannel(int newCurrentChannel) {
-        if (newCurrentChannel > 9) {
+        if (newCurrentChannel > this.maxRadiostation) {
             currentChannel = 0;
         } else if (newCurrentChannel < 0) {
-            currentChannel = 9;
+            currentChannel = this.maxRadiostation;
         } else {
             currentChannel = newCurrentChannel;
         }
