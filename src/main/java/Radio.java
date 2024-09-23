@@ -1,6 +1,6 @@
 public class Radio {
-    private int  currentChannel;
-    private int  currentVolume;
+    private int currentChannel;
+    private int currentVolume;
     private int maxRadiostation;
 
     public Radio() {
@@ -45,7 +45,7 @@ public class Radio {
         } else if (newCurrentVolume > 100) {
             currentVolume = 100;
         } else {
-        currentVolume = newCurrentVolume;
+            currentVolume = newCurrentVolume;
         }
     }
 
