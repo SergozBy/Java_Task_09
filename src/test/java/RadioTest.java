@@ -6,7 +6,7 @@ public class RadioTest {
 
     // Set channel to 5
     @Test
-    public void shouldSetCurrentChannel () {
+    public void shouldSetCurrentChannel() {
         Radio radio = new Radio();
         radio.setCurrentChannel(5);
 
@@ -18,7 +18,7 @@ public class RadioTest {
 
     // Set channel from 5 to 6
     @Test
-    public void shouldSetCurrentChannelNext_6 () {
+    public void shouldSetCurrentChannelNext_6() {
         Radio radio = new Radio();
         radio.setCurrentChannel(5);
         radio.switchChannelNext();
@@ -31,7 +31,7 @@ public class RadioTest {
 
     // Set channel from 9 to 0
     @Test
-    public void shouldSetCurrentChannelNext_0 () {
+    public void shouldSetCurrentChannelNext_0() {
         Radio radio = new Radio();
         radio.setCurrentChannel(9);
         radio.switchChannelNext();
@@ -44,7 +44,7 @@ public class RadioTest {
 
     // Set channel from 0 to 9
     @Test
-    public void shouldSetCurrentChannelPrev_9 () {
+    public void shouldSetCurrentChannelPrev_9() {
         Radio radio = new Radio();
         radio.setCurrentChannel(0);
         radio.switchChannelPrev();
@@ -57,7 +57,7 @@ public class RadioTest {
 
     // Set volume to 50
     @Test
-    public void shouldSetCurrentVolume () {
+    public void shouldSetCurrentVolume() {
         Radio radio = new Radio();
         radio.setCurrentVolume(50);
 
@@ -69,7 +69,7 @@ public class RadioTest {
 
     // Set volume lower than 0 (min value)
     @Test
-    public void shouldSetCurrentVolume_0 () {
+    public void shouldSetCurrentVolume_0() {
         Radio radio = new Radio();
         radio.setCurrentVolume(-1);
 
@@ -81,7 +81,7 @@ public class RadioTest {
 
     // Set volume greeter than 100 (max value)
     @Test
-    public void shouldSetCurrentVolume_100 () {
+    public void shouldSetCurrentVolume_100() {
         Radio radio = new Radio();
         radio.setCurrentVolume(111);
 
@@ -93,7 +93,7 @@ public class RadioTest {
 
     // Set volume greeter than 100 by function (max value)
     @Test
-    public void shouldSetCurrentVolumeUp_100 () {
+    public void shouldSetCurrentVolumeUp_100() {
         Radio radio = new Radio();
         radio.setCurrentVolume(100);
         radio.switchVolumeUp();
@@ -106,13 +106,39 @@ public class RadioTest {
 
     // Set volume lower than 0 by function(min value)
     @Test
-    public void shouldSetCurrentVolumeDown_0 () {
+    public void shouldSetCurrentVolumeDown_0() {
         Radio radio = new Radio();
         radio.setCurrentVolume(0);
         radio.switchVolumeDown();
 
         int expected = 0;
         int actual = radio.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    // Set count of channels and select 10
+    @Test
+    public void shouldSetCurrentChannel_11() {
+        Radio radio = new Radio(13);
+        radio.setCurrentChannel(10);
+        radio.switchChannelNext();
+
+        int expected = 11;
+        int actual = radio.getCurrentChannel();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    // Set count of channels, select max channel and press "next channel"
+    @Test
+    public void shouldSetCurrentChannel_0() {
+        Radio radio = new Radio(13);
+        radio.setCurrentChannel(12);
+        radio.switchChannelNext();
+
+        int expected = 0;
+        int actual = radio.getCurrentChannel();
 
         Assertions.assertEquals(expected, actual);
     }
